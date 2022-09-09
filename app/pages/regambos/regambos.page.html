@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/">
+      </ion-back-button>
+      <ion-button (click)="mostrarMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Ambos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form #formulario="ngForm" (ngSubmit) ="onSubmit()">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Correo</ion-label>
+          <ion-item>
+            <ion-input type="email" placeholder="Ingrese Correo"
+                       name="email" [(ngModel)]="ambos.email"
+                       pattern="^([a-zA-Z0-9.\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Contraseña</ion-label>
+          <ion-item>
+            <ion-input type="password" placeholder="Ingrese Contraseña"
+                       name="password" [(ngModel)]="ambos.password" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Nombre</ion-label>
+          <ion-item>
+            <ion-input type="text" placeholder="Ingrese Nombre"
+                       name="nombre" [(ngModel)]="ambos.nombre" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Apellido</ion-label>
+          <ion-item>
+            <ion-input type="text" placeholder="Ingrese Apellido"
+                       name="apellido" [(ngModel)]="ambos.apellido" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Dirección</ion-label>
+          <ion-item>
+            <ion-input type="text" placeholder="Ingrese Dirección"
+                       name="direccion" [(ngModel)]="ambos.direccion" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Patente</ion-label>
+          <ion-item>
+            <ion-input type="text" placeholder="AA-BB-22 o AA-11-22"
+                       name="patente" [(ngModel)]="ambos.patente" 
+                       pattern="^([a-zA-Z]+)-([a-zA-Z0-9]+)-([0-9]{2,5})$" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Marca</ion-label>
+          <ion-item>
+            <ion-input type="text" placeholder="Ingrese Marca Vehículo"
+                       name="marca" [(ngModel)]="ambos.marca" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Modelo</ion-label>
+          <ion-item>
+            <ion-input type="text" placeholder="Ingrese Modelo"
+                       name="modelo" [(ngModel)]="ambos.modelo" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Color Vehículo</ion-label>
+          <ion-item>
+            <ion-input type="text" placeholder="Ingrese Color Vehículo"
+                       name="color" [(ngModel)]="ambos.color" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Rut</ion-label>
+          <ion-item>
+            <ion-input type="text" placeholder="Ingrese Rut con DV"
+                       name="rut" [(ngModel)]="ambos.rut"
+                       pattern="^([0-9]+)-([0-9kK])$"
+                       length="10" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-label>Sede</ion-label>
+          <ion-item>
+            <ion-input type="text" placeholder="Ingrese Sede donde Estudia"
+                       name="sede" [(ngModel)]="ambos.sede" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="6" class="ion-text-center" offset="3">
+          <ion-button [disabled] ="formulario.invalid"
+                       type="submit" expand="block" routerLink="/viajar">
+          Ingresar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

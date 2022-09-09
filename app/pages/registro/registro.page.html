@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/">
+      </ion-back-button>
+      <ion-button (click)="mostrarMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-col class="ion-text-center" size="12">
+      <img src="assets/Yo te llevo!!.png" class="ion-padding">
+    </ion-col>
+  <ion-row class="ion-align-items-center">
+    <ion-col size="6" class="ion-text-center" offset="3">
+      <ion-button routerLink="/regpasajero" expand="block" fill="solid" shape="round">
+        Pasajero
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-align-items-center">
+    <ion-col size="6" class="ion-text-center" offset="3">
+      <ion-button routerLink="/regconductor" expand="block" fill="solid" shape="round">
+        Conductor
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-align-items-center">
+    <ion-col size="6" class="ion-text-center" offset="3">
+      <ion-button routerLink="/regambos" expand="block" fill="solid" shape="round">
+        Ambos
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
