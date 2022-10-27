@@ -8,7 +8,7 @@
         <ion-icon slot="icon-only" name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Ambos</ion-title>
+    <ion-title>Registro Conductor/Pasajero</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,7 +21,7 @@
           <ion-label>Correo</ion-label>
           <ion-item>
             <ion-input type="email" placeholder="Ingrese Correo"
-                       name="email" [(ngModel)]="ambos.email"
+                       name="email" [(ngModel)]="newDato.email"
                        pattern="^([a-zA-Z0-9.\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
             </ion-input>
           </ion-item>
@@ -32,7 +32,7 @@
           <ion-label>Contraseña</ion-label>
           <ion-item>
             <ion-input type="password" placeholder="Ingrese Contraseña"
-                       name="password" [(ngModel)]="ambos.password" required>
+                       name="password" [(ngModel)]="newDato.password" required>
             </ion-input>
           </ion-item>
         </ion-col>
@@ -42,7 +42,7 @@
           <ion-label>Nombre</ion-label>
           <ion-item>
             <ion-input type="text" placeholder="Ingrese Nombre"
-                       name="nombre" [(ngModel)]="ambos.nombre" required>
+                       name="nombre" [(ngModel)]="newDato.nombre" required>
             </ion-input>
           </ion-item>
         </ion-col>
@@ -52,7 +52,7 @@
           <ion-label>Apellido</ion-label>
           <ion-item>
             <ion-input type="text" placeholder="Ingrese Apellido"
-                       name="apellido" [(ngModel)]="ambos.apellido" required>
+                       name="apellido" [(ngModel)]="newDato.apellido" required>
             </ion-input>
           </ion-item>
         </ion-col>
@@ -62,7 +62,7 @@
           <ion-label>Dirección</ion-label>
           <ion-item>
             <ion-input type="text" placeholder="Ingrese Dirección"
-                       name="direccion" [(ngModel)]="ambos.direccion" required>
+                       name="direccion" [(ngModel)]="newDato.direccion" required>
             </ion-input>
           </ion-item>
         </ion-col>
@@ -72,7 +72,7 @@
           <ion-label>Patente</ion-label>
           <ion-item>
             <ion-input type="text" placeholder="AA-BB-22 o AA-11-22"
-                       name="patente" [(ngModel)]="ambos.patente" 
+                       name="patente" [(ngModel)]="newDato.patente" 
                        pattern="^([a-zA-Z]+)-([a-zA-Z0-9]+)-([0-9]{2,5})$" required>
             </ion-input>
           </ion-item>
@@ -83,7 +83,7 @@
           <ion-label>Marca</ion-label>
           <ion-item>
             <ion-input type="text" placeholder="Ingrese Marca Vehículo"
-                       name="marca" [(ngModel)]="ambos.marca" required>
+                       name="marca" [(ngModel)]="newDato.marca" required>
             </ion-input>
           </ion-item>
         </ion-col>
@@ -93,7 +93,7 @@
           <ion-label>Modelo</ion-label>
           <ion-item>
             <ion-input type="text" placeholder="Ingrese Modelo"
-                       name="modelo" [(ngModel)]="ambos.modelo" required>
+                       name="modelo" [(ngModel)]="newDato.modelo" required>
             </ion-input>
           </ion-item>
         </ion-col>
@@ -103,7 +103,7 @@
           <ion-label>Color Vehículo</ion-label>
           <ion-item>
             <ion-input type="text" placeholder="Ingrese Color Vehículo"
-                       name="color" [(ngModel)]="ambos.color" required>
+                       name="color" [(ngModel)]="newDato.color" required>
             </ion-input>
           </ion-item>
         </ion-col>
@@ -113,7 +113,7 @@
           <ion-label>Rut</ion-label>
           <ion-item>
             <ion-input type="text" placeholder="Ingrese Rut con DV"
-                       name="rut" [(ngModel)]="ambos.rut"
+                       name="rut" [(ngModel)]="newDato.rut"
                        pattern="^([0-9]+)-([0-9kK])$"
                        length="10" required>
             </ion-input>
@@ -125,7 +125,7 @@
           <ion-label>Sede</ion-label>
           <ion-item>
             <ion-input type="text" placeholder="Ingrese Sede donde Estudia"
-                       name="sede" [(ngModel)]="ambos.sede" required>
+                       name="sede" [(ngModel)]="newDato.sede" required>
             </ion-input>
           </ion-item>
         </ion-col>
@@ -133,7 +133,8 @@
       <ion-row class="ion-align-items-center">
         <ion-col size="6" class="ion-text-center" offset="3">
           <ion-button [disabled] ="formulario.invalid"
-                       type="submit" expand="block" routerLink="/viajar">
+                       type="submit" expand="block" routerLink="/viajar"
+                       (click)="addDatos()">
           Ingresar
           </ion-button>
         </ion-col>
