@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NoIngresadoGuard } from './no-ingresado.guard';
 import { IngresadoAGuard } from './ingresado-a.guard';
 import { IngresadoBGuard } from './ingresado-b.guard';
+import { IngresadoGuard } from './ingresado.guard';
 
 const routes: Routes = [
   {
@@ -16,23 +17,23 @@ const routes: Routes = [
   },
   {
     path: 'viajar',
-    loadChildren: () => import('./pages/viajar/viajar.module').then( m => m.ViajarPageModule), canActivate: [IngresadoBGuard ,IngresadoAGuard] 
+    loadChildren: () => import('./pages/viajar/viajar.module').then( m => m.ViajarPageModule), canActivate: [IngresadoGuard] 
   },
   {
     path: 'llevar',
-    loadChildren: () => import('./pages/llevar/llevar.module').then( m => m.LlevarPageModule), canActivate: [IngresadoAGuard]
+    loadChildren: () => import('./pages/llevar/llevar.module').then( m => m.LlevarPageModule), canActivate: [IngresadoGuard]
   },
   {
     path: 'tu-viaje',
-    loadChildren: () => import('./pages/tu-viaje/tu-viaje.module').then( m => m.TuViajePageModule), canActivate: [IngresadoBGuard, IngresadoAGuard] 
+    loadChildren: () => import('./pages/tu-viaje/tu-viaje.module').then( m => m.TuViajePageModule), canActivate: [IngresadoGuard] 
   },
   {
     path: 'historial',
-    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule), canActivate: [IngresadoBGuard, IngresadoAGuard] 
+    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule), canActivate: [IngresadoGuard] 
   },
   {
     path: 'mis-datos',
-    loadChildren: () => import('./pages/mis-datos/mis-datos.module').then( m => m.MisDatosPageModule), canActivate: [IngresadoBGuard, IngresadoAGuard] 
+    loadChildren: () => import('./pages/mis-datos/mis-datos.module').then( m => m.MisDatosPageModule), canActivate: [IngresadoGuard] 
   },
   {
     path: 'login',

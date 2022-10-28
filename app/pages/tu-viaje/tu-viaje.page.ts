@@ -33,11 +33,7 @@ export class TuViajePage implements OnInit {
 
   async logout(){
     console.log('loggedout');
-    if (localStorage.getItem('ingresadoA')){
-      localStorage.removeItem('ingresadoA')
-    }else {
-      localStorage.removeItem('ingresadoB')
-    };
+    localStorage.removeItem('ingresado')
     this.navController.navigateRoot('login');
   }
 }

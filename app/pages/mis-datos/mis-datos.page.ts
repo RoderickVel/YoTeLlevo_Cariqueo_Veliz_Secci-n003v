@@ -83,13 +83,9 @@ export class MisDatosPage implements OnInit {
   }
   
   async logout(){
-          console.log('loggedout');
-          if (localStorage.getItem('ingresadoA')){
-            localStorage.removeItem('ingresadoA')
-          }else {
-            localStorage.removeItem('ingresadoB')
-          };
-          this.navController.navigateRoot('login');
-        }
+    console.log('loggedout');
+    localStorage.removeItem('ingresado')
+    this.navController.navigateRoot('login');
+  }
 }
 

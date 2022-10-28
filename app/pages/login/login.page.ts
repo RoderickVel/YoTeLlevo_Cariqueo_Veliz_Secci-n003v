@@ -41,13 +41,11 @@ export class LoginPage implements OnInit {
           a=1;
           if(obj.tipoUser==="conductor"){
             console.log('ingresadoA');
-            localStorage.clear();
-            localStorage.setItem('ingresadoA', 'true');
+            localStorage.setItem('ingresado', 'true');
             this.navController.navigateRoot('llevar');
           }else {
             console.log('ingresadoB');
-            localStorage.clear();
-            localStorage.setItem('ingresadoB', 'true');
+            localStorage.setItem('ingresado', 'true');
             this.navController.navigateRoot('viajar');
           }
         }
