@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'regambos',
     loadChildren: () => import('./pages/regambos/regambos.module').then( m => m.RegambosPageModule)
   },
+  {
+    path: 'mis-datos',
+    loadChildren: () => import('./pages/mis-datos/mis-datos.module').then( m => m.MisDatosPageModule)
+  },
 ];
 
 @NgModule({

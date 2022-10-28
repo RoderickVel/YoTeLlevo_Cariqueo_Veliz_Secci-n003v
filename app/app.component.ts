@@ -40,5 +40,10 @@ export class AppComponent {
       name:'Logout',
       redirecTo:''
     },
+    {
+      icon:'book',
+      name:'Mis Datos',
+      redirecTo:'/mis-datos'
+    },
   ]
 }
