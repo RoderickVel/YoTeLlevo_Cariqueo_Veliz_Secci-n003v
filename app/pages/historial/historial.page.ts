@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-historial',
@@ -8,13 +8,24 @@ import { MenuController } from '@ionic/angular';
 })
 export class HistorialPage implements OnInit {
 
-  constructor(private menuController: MenuController) {}
+  constructor(private menuController: MenuController,
+              private navController: NavController) {}
 
   ngOnInit() {
   }
 
   mostrarMenu(){
   this.menuController.open('first');
+  }
+
+  async logout(){
+    console.log('loggedout');
+    if (localStorage.getItem('ingresadoA')){
+      localStorage.removeItem('ingresadoA')
+    }else {
+      localStorage.removeItem('ingresadoB')
+    };
+    this.navController.navigateRoot('login');
   }
 
 }

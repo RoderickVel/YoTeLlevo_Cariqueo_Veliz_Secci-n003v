@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-llevar',
@@ -8,7 +8,8 @@ import { MenuController } from '@ionic/angular';
 })
 export class LlevarPage implements OnInit {
 
-  constructor(private menuController: MenuController) {}
+  constructor(private menuController: MenuController,
+              private navController: NavController) {}
 
   ngOnInit() {
   }
@@ -17,4 +18,13 @@ export class LlevarPage implements OnInit {
   this.menuController.open('first');
   }
 
+  async logout(){
+    console.log('loggedout');
+    if (localStorage.getItem('ingresadoA')){
+      localStorage.removeItem('ingresadoA')
+    }else {
+      localStorage.removeItem('ingresadoB')
+    };
+    this.navController.navigateRoot('login');
+  }
 }

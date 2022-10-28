@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
+import { RegistroserviceService, Usuario } from '../../services/registroservice.service';
+import { FormGroup,
+         FormControl,
+         Validators,
+         FormBuilder} from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -8,23 +15,60 @@ import { MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  usuario = {
-  email:'',
-  password:''
-  }
+  formularioLogin : FormGroup;
 
-  constructor(private menuController: MenuController) {}
+  constructor(private alertController: AlertController,
+              private navController: NavController,
+              private registroService: RegistroserviceService,
+              private fb: FormBuilder,
+              private menuController: MenuController) {
+                this.formularioLogin = this.fb.group({
+                  'correo': new FormControl("",Validators.required),
+                  'password': new FormControl("",Validators.required),
+                })
+              }
 
   ngOnInit() {
   }
 
+  async Ingresar(){
+    var f = this.formularioLogin.value; 
+    var a = 0;
+    this.registroService.getDatos().then(datos=>{ 
+
+      for(let obj of datos){
+        if(obj.correo===f.correo && obj.password===f.password){
+          a=1;
+          if(obj.tipoUser==="conductor"){
+            console.log('ingresadoA');
+            localStorage.clear();
+            localStorage.setItem('ingresadoA', 'true');
+            this.navController.navigateRoot('llevar');
+          }else {
+            console.log('ingresadoB');
+            localStorage.clear();
+            localStorage.setItem('ingresadoB', 'true');
+            this.navController.navigateRoot('viajar');
+          }
+        }
+      }
+      if(a==0){
+        this.alertMsg();
+      }
+    })
+  }//findelmetodo
+
+  async alertMsg(){
+    const alert = await this.alertController.create({
+      header:'Error..',
+      message:'Los datos ingresados son incorrectos',
+      buttons:['Aceptar'],
+    });
+    await alert.present();
+    return;
+  }
+
   mostrarMenu(){
-  this.menuController.open('first');
-  }
-
-  onSubmit(){
-    console.log('submit');
-    console.log(this.usuario);
-  }
-
+    this.menuController.open('first');
+    }
 }

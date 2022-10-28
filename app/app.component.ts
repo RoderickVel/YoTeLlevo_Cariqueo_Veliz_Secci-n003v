@@ -36,11 +36,6 @@ export class AppComponent {
       redirecTo:'/historial'
     },
     {
-      icon:'exit',
-      name:'Logout',
-      redirecTo:''
-    },
-    {
       icon:'book',
       name:'Mis Datos',
       redirecTo:'/mis-datos'

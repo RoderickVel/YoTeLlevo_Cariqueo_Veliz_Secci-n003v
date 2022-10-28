@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonList, MenuController, Platform, ToastController } from '@ionic/angular';
-import { ServicesdatosService, Datos } from '../../services/servicesdatos.service';
+import { IonList, MenuController, Platform, ToastController, NavController } from '@ionic/angular';
+import { RegistroserviceService, Usuario } from '../../services/registroservice.service';
 
 @Component({
   selector: 'app-mis-datos',
@@ -9,14 +9,15 @@ import { ServicesdatosService, Datos } from '../../services/servicesdatos.servic
 })
 export class MisDatosPage implements OnInit {
 
-  datos: Datos[] = [];
-  newDato: Datos = <Datos>{};
+  datos: Usuario[] = [];
+  newDato: Usuario = <Usuario>{};
   @ViewChild('myList')myList :IonList;
 
   constructor(private menuController: MenuController,
-              private storageService: ServicesdatosService,
+              private storageService: RegistroserviceService,
               private plt: Platform,
-              private toastController: ToastController) {
+              private toastController: ToastController,
+              private navController: NavController) {
                 this.plt.ready().then(()=>{
                   this.loadDatos();
                 });
@@ -37,23 +38,22 @@ export class MisDatosPage implements OnInit {
 
   addDatos(){
     this.storageService.addDatos(this.newDato).then(dato=>{
-      this.newDato = <Datos>{};
+      this.newDato = <Usuario>{};
       this.showToast('Datos Agregados!');
       this.loadDatos();
     })
   }
 
-  updateDatos(dato: Datos){
+  updateDatos(dato: Usuario){
     dato.nombre = `UPDATED: ${dato.nombre}`;
     dato.apellido = `UPDATED: ${dato.apellido}`;
-    dato.direccion = `UPDATED: ${dato.direccion}`;
-    dato.email = `UPDATED: ${dato.email}`;
+    dato.correo = `UPDATED: ${dato.correo}`;
     dato.sede = `UPDATED: ${dato.sede}`;
     dato.marca = `UPDATED: ${dato.marca}`;
     dato.modelo = `UPDATED: ${dato.modelo}`;
     dato.patente = `UPDATED: ${dato.patente}`;
     dato.color = `UPDATED: ${dato.color}`;
-    dato.password = `UPDATED: ${dato.password}`;
+    dato.tipoUser = `UPDATED: ${dato.tipoUser}`;
     this.storageService.updateDatos(dato).then(item=>{
       this.showToast('Elemento actualizado!')
       this.myList.closeSlidingItems();
@@ -61,7 +61,7 @@ export class MisDatosPage implements OnInit {
     });
   }
 
-  deleteDatos(dato: Datos){
+  deleteDatos(dato: Usuario){
     this.storageService.deleteDatos(dato.rut).then(item=>{
       this.showToast('Elemento Eliminado');
       this.myList.closeSlidingItems();
@@ -81,5 +81,15 @@ export class MisDatosPage implements OnInit {
     console.log('submit');
     console.log(this.datos);
   }
+  
+  async logout(){
+          console.log('loggedout');
+          if (localStorage.getItem('ingresadoA')){
+            localStorage.removeItem('ingresadoA')
+          }else {
+            localStorage.removeItem('ingresadoB')
+          };
+          this.navController.navigateRoot('login');
+        }
 }
 

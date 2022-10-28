@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
+import { RegistroserviceService, Usuario } from '../../services/registroservice.service';
 
 @Component({
   selector: 'app-viajar',
@@ -8,7 +9,10 @@ import { MenuController } from '@ionic/angular';
 })
 export class ViajarPage implements OnInit {
 
-  constructor(private menuController: MenuController) {}
+  datos: Usuario[] = [];
+  constructor(private menuController: MenuController,
+              private navController: NavController,
+              private storageService: RegistroserviceService) {}
 
   ngOnInit() {
   }
@@ -17,4 +21,13 @@ export class ViajarPage implements OnInit {
   this.menuController.open('first');
   }
 
+  async logout(){
+    console.log('loggedout');
+    if (localStorage.getItem('ingresadoA')){
+      localStorage.removeItem('ingresadoA')
+    }else {
+      localStorage.removeItem('ingresadoB')
+    };
+    this.navController.navigateRoot('login');
+  }
 }

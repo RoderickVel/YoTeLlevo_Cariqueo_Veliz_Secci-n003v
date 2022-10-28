@@ -1,50 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button
-        defaultHref="/">
-      </ion-back-button>
-      <ion-button (click)="mostrarMenu()" color="primary">
-        <ion-icon slot="icon-only" name="menu"></ion-icon>
-      </ion-button>
-    </ion-buttons>
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form #formulario="ngForm" (ngSubmit) ="onSubmit()">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="12">
-          <ion-label>Usuario</ion-label>
-          <ion-item>
-            <ion-input type="email" placeholder="Ingrese Correo"
-                       name="email" [(ngModel)]="usuario.email"
-                       pattern="^([a-zA-Z0-9.\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
-            </ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="12">
-          <ion-label>Contraseña</ion-label>
-          <ion-item>
-            <ion-input type="password" placeholder="Ingrese Contraseña"
-                       name="password" [(ngModel)]="usuario.password" required>
-            </ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="6" class="ion-text-center" offset="3">
-          <ion-button [disabled] ="formulario.invalid"
-                       type="submit" expand="block" routerLink="/viajar">
-          Ingresar
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Login</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup] = "formularioLogin">
 
+        <ion-item>
+          <ion-label position="floating">Correo:</ion-label>
+          <ion-input formControlName="correo" type="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password:</ion-label>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+      </form>
+      <br>
+      <ion-button (click)="Ingresar()" expand="block" fill="outline" shape="round">
+        Ingresar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/registro']">
+        Registrarse
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

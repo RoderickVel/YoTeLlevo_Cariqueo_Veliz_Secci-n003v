@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { UbicacionService } from '../../services/ubicacion.service';
 import { Data } from '../../interfaces/interfaces';
 
@@ -15,7 +15,8 @@ export class TuViajePage implements OnInit {
   ubicacion: Data[] = [];
 
   constructor(private menuController: MenuController,
-              private ubicacionService: UbicacionService) {}
+              private ubicacionService: UbicacionService,
+              private navController: NavController) {}
 
   ngOnInit() {
 
@@ -30,4 +31,13 @@ export class TuViajePage implements OnInit {
   this.menuController.open('first');
   }
 
+  async logout(){
+    console.log('loggedout');
+    if (localStorage.getItem('ingresadoA')){
+      localStorage.removeItem('ingresadoA')
+    }else {
+      localStorage.removeItem('ingresadoB')
+    };
+    this.navController.navigateRoot('login');
+  }
 }
