@@ -64,7 +64,7 @@ export class TuViajePage implements OnInit {
     });
   
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      //this.renderMarkers(); prueba
+      //this.renderMarkers();
       mapEle.classList.add('show-map');
       const marker={
         position:{
